@@ -43,10 +43,7 @@ notetakerapp.post("/api/notes", function(req, res) {
             fs.writeFile('./db/db.json', JSON.stringify(data), (err, data)=> {
                 // after you stringify then send file newNote
                 res.json(newNote);
-            }
-            )
-  })
-});
+  })})
 
 
 notetakerapp.get("*", function (req, res) {

@@ -3,8 +3,6 @@ let notetakerapp = express();
 let PORT = 3001;
 let path = require("path");
 let fs = require('fs');
-notetakerapp.use(express.urlencoded({ extended: true }));
-notetakerapp.use(express.json());
 notetakerapp.use(express.static("public"));
 
 notetakerapp.get("/notes", function (req, res) {
@@ -36,17 +34,6 @@ notetakerapp.post("/api/notes", function(req, res) {
    
   });
   
-  notetakerapp.delete("/api/notes/:id", function(req,res){
-    fs.readFile('./db/db.json', 'utf-8', (err, data) => {
-        var data = JSON.parse(data)
-            // search through data array locate correct ID, thats coming from req.params.id, once you find match you needto remove from array . after you remove from array then write new array to the file. 
-            fs.writeFile('./db/db.json', JSON.stringify(data), (err, data)=> {
-                // after you stringify then send file newNote
-                res.json(newNote);
-            }
-            )
-  })
-});
 
 
 notetakerapp.get("*", function (req, res) {
@@ -56,3 +43,4 @@ notetakerapp.get("*", function (req, res) {
 notetakerapp.listen(PORT, function () {
     console.log("Server has started");
 })
+

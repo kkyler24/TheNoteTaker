@@ -39,6 +39,7 @@ notetakerapp.post("/api/notes", function(req, res) {
   notetakerapp.delete("/api/notes/:id", function(req,res){
     fs.readFile('./db/db.json', 'utf-8', (err, data) => {
         var data = JSON.parse(data)
+    
             // search through data array locate correct ID, thats coming from req.params.id, once you find match you needto remove from array . after you remove from array then write new array to the file. 
             fs.writeFile('./db/db.json', JSON.stringify(data), (err, data)=> {
                 // after you stringify then send file newNote
