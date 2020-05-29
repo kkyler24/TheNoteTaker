@@ -1,7 +1,6 @@
 let express = require('express');
 let notetakerapp = express();
-// when deployingto heroku, they will use their own port you cannot assign it a port
-let PORT = process.env.PORT||3001;
+let PORT = 3001;
 let path = require("path");
 let fs = require('fs');
 notetakerapp.use(express.urlencoded({ extended: true }));
